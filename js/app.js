@@ -1,101 +1,106 @@
-var hironame;
+var hiroName;
+var mind = 5;
+var body = 5;
 
 var heroButton = document.querySelector('#heroNameForm');
 heroButton.addEventListener('submit', function(e) {
   e.preventDefault();
-  hironame = this.querySelector('input').value;
-  console.log(hironame)
+  hiroName = this.querySelector('input').value;
+  console.log(hiroName)
   introduction();
 });
 
 function introduction() {
-  document.getElementById('intro').innerHTML = '';
+  console.log('mind='+mind);
+  console.log('body='+body);
   var div = document.createElement('div');
-  div.innerHTML = 'This is the story of a character named ' + hironame;
+  div.innerHTML = 'This is the story of a character named ' + hiroName + '<br>Was ' + hiroName+ ' smart or strong?';
   div.id = 'story';
   document.body.appendChild(div);
 
   var div = document.createElement('button');
-  div.innerHTML = 'option A';
+  div.innerHTML = 'smart';
   div.id = 'input';
-  div.addEventListener('click', optiona);
+  div.addEventListener('click', smart);
   document.getElementById('options').appendChild(div);
 
   var div = document.createElement('button');
-  div.innerHTML = 'option B';
+  div.innerHTML = 'strong';
   div.id = 'input';
-  div.addEventListener('click', optionb);
+  div.addEventListener('click', strong);
   document.getElementById('options').appendChild(div);
 }
 
-function optiona() {
+function smart() {
+  mind = mind + 3;
+  console.log("mind="+mind);
   document.getElementById('options').innerHTML = '';
   var div = document.createElement('div');
-  div.innerHTML = hironame + ' Was a smart person';
+  div.innerHTML = hiroName + ' was a smart person.<br>There was a chance to talk or fight.';
   div.id = 'story';
   document.body.appendChild(div);
-
-  var div = document.createElement('button');
-  div.innerHTML = 'option A1';
-  div.id = 'input';
-  div.addEventListener('click', optiona1);
-  document.getElementById('options').appendChild(div);
-
-  var div = document.createElement('button');
-  div.innerHTML = 'option A2';
-  div.id = 'input';
-  div.addEventListener('click', optiona2);
-  document.getElementById('options').appendChild(div);
+  choice();
 }
 
-function optionb() {
+function strong() {
+  body = body + 3;
+  console.log('body='+body);
   document.getElementById('options').innerHTML = '';
   var div = document.createElement('div');
-  div.innerHTML = hironame + ' was a strong person';
+  div.innerHTML = hiroName + ' was a strong person.<br>There was a chance to talk or fight.';
   div.id = 'story';
   document.body.appendChild(div);
+  choice();
+}
 
+function choice () {
   var div = document.createElement('button');
-  div.innerHTML = 'option B1';
+  div.innerHTML = 'Talk';
   div.id = 'input';
-  div.addEventListener('click', optionb1);
+  div.addEventListener('click', talk);
   document.getElementById('options').appendChild(div);
 
   var div = document.createElement('button');
-  div.innerHTML = 'option B2';
+  div.innerHTML = 'Fight';
   div.id = 'input';
-  div.addEventListener('click', optionb2);
+  div.addEventListener('click', fight);
   document.getElementById('options').appendChild(div);
 }
 
-function optiona1() {
+function talk() {
   document.getElementById('options').innerHTML = '';
-  var div = document.createElement('div');
-  div.innerHTML = 'this is ending A1'
-  div.id = 'story';
-  document.body.appendChild(div);
+  mind = mind + Math.floor(Math.random()*5);
+  console.log("mind="+mind);
+  if (mind>=9) {
+    console.log('pass');
+    var div = document.createElement('div');
+    div.innerHTML = hiroName + ' was able to talk through the problem.';
+    div.id = 'story';
+    document.body.appendChild(div);
+  } else {
+    console.log('fail');
+    var div = document.createElement('div');
+    div.innerHTML = hiroName + ' found that talking did no good here.';
+    div.id = 'story';
+    document.body.appendChild(div);
+  };
 }
 
-function optiona2() {
+function fight() {
   document.getElementById('options').innerHTML = '';
-  var div = document.createElement('div');
-  div.innerHTML = 'this is ending A2'
-  div.id = 'story';
-  document.body.appendChild(div);
-}
-
-function optionb1() {
-  document.getElementById('options').innerHTML = '';
-  var div = document.createElement('div');
-  div.innerHTML = 'this is ending B1'
-  div.id = 'story';
-  document.body.appendChild(div);
-}
-
-function optionb2() {
-  document.getElementById('options').innerHTML = '';
-  var div = document.createElement('div');
-  div.innerHTML = 'this is ending B2'
-  div.id = 'story';
-  document.body.appendChild(div);
+  body = body + Math.floor(Math.random()*5);
+  console.log("body="+body);
+  if (body>=9) {
+    console.log('pass');
+    var div = document.createElement('div');
+    div.innerHTML = hiroName + ' was able to fight through the problem.';
+    div.id = 'story';
+    document.body.appendChild(div);
+  } else {
+    console.log('fail');
+    var div = document.createElement('div');
+    div.innerHTML = hiroName + ' found that fighting did no good here.';
+    div.id = 'story';
+    document.body.appendChild(div);
+  };
 }
