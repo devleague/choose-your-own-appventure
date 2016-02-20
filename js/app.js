@@ -15,7 +15,7 @@ function introduction() {
   console.log('body='+body);
   var div = document.createElement('div');
   div.innerHTML = 'This is the story of a character named ' + hiroName + '<br>Was ' + hiroName+ ' smart or strong?';
-  div.id = 'story';
+  div.id = 'introduction';
   document.body.appendChild(div);
 
   var div = document.createElement('button');
@@ -37,7 +37,7 @@ function smart() {
   document.getElementById('options').innerHTML = '';
   var div = document.createElement('div');
   div.innerHTML = hiroName + ' was a smart person.<br>There was a chance to talk or fight.';
-  div.id = 'story';
+  div.id = 'conflict';
   document.body.appendChild(div);
   choice();
 }
@@ -48,7 +48,7 @@ function strong() {
   document.getElementById('options').innerHTML = '';
   var div = document.createElement('div');
   div.innerHTML = hiroName + ' was a strong person.<br>There was a chance to talk or fight.';
-  div.id = 'story';
+  div.id = 'conflict';
   document.body.appendChild(div);
   choice();
 }
@@ -75,13 +75,13 @@ function talk() {
     console.log('pass');
     var div = document.createElement('div');
     div.innerHTML = hiroName + ' was able to talk through the problem.';
-    div.id = 'story';
+    div.id = 'endingGood';
     document.body.appendChild(div);
   } else {
     console.log('fail');
     var div = document.createElement('div');
     div.innerHTML = hiroName + ' found that talking did no good here.';
-    div.id = 'story';
+    div.id = 'endingBad';
     document.body.appendChild(div);
   };
 }
@@ -94,13 +94,13 @@ function fight() {
     console.log('pass');
     var div = document.createElement('div');
     div.innerHTML = hiroName + ' was able to fight through the problem.';
-    div.id = 'story';
+    div.id = 'endingGood';
     document.body.appendChild(div);
   } else {
     console.log('fail');
     var div = document.createElement('div');
     div.innerHTML = hiroName + ' found that fighting did no good here.';
-    div.id = 'story';
+    div.id = 'endingBad';
     document.body.appendChild(div);
   };
 }
